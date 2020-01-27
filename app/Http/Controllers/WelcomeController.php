@@ -11,10 +11,11 @@ class WelcomeController extends Controller
 {
     public function index()
     {
+        
         $categories = Category::all();
         $tags = Tag::all();
-        $posts = Post::all();
-        
+        $posts = Post::searched()->simplePaginate(3);
+
         return view('welcome', compact('categories', 'tags', 'posts'));
     }
 }
